@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Criar nova tarefa</ion-title>
+
+    <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismis()"></ion-icon>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="ion-align-self-center">
+    <ion-item>
+      <ion-textarea aria-label="tarefa" [(ngModel)]="minhaTarefa.nome"  placeholder="Informe a tarefa"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Prioridade</ion-label>
+      <ion-select placeholder="Prioridade" aria-label="prioridade" [(ngModel)]="minhaTarefa.prioridade">
+        <ion-select-option value="baixo">Baixa</ion-select-option>
+        <ion-select-option value="medio">Média</ion-select-option>
+        <ion-select-option value="alto" selected>Alta</ion-select-option>
+       </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-icon name="calendar-outline"slot="start"></ion-icon>
+      <ion-label >Data limite</ion-label>
+      <ion-datetime [(ngModel)]="dataSelecionada" presentation="date"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+      <ion-label> Categoria </ion-label>
+      <span>{{categoriaSelecionada}}</span>
+    </ion-item>
+
+    <ion-item>
+      <ion-chip *ngFor="let tag of categorias; let i = index" color="secondary" outline="true" (click)="selecionarCategoria(i)">
+        <ion-label color="secondary" class="ion-wrap">{{tag}}</ion-label>
+      </ion-chip>
+
+    </ion-item>
+
+    <ion-button class="ion-margin" expand="block" (click)="adicionar()">Adicionar tarefa</ion-button>
+  </ion-card>
+
+</ion-content>

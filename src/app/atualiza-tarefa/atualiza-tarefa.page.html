@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Atualizar tarefa</ion-title>
+    <ion-icon name="close" slot="end" size="larger" class="ion-padding" (click)="dismis()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="ion-align-self-center">
+    <ion-item>
+      <ion-textarea [(ngModel)]="tarefaAtualizada.nome" placeholder="Informe a tarefa"></ion-textarea>
+    </ion-item>
+ 
+
+    <ion-item>
+      <ion-label >Prioridade</ion-label>
+      <ion-select [(ngModel)]="tarefaAtualizada.prioridade">
+        <ion-select-option value="baixo">Baixo</ion-select-option>
+        <ion-select-option value="medio">Médio</ion-select-option>
+        <ion-select-option value="alto" selected>Alto</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- -->
+    <ion-item>
+      <ion-icon slot="start" name="calendar-outline"></ion-icon>
+      <ion-label>Data limite</ion-label>
+      <ion-datetime  [(ngModel)]="tarefaAtualizada.data" presentation="date"></ion-datetime>
+    </ion-item>
+    
+
+    <ion-item>
+      <ion-icon slot="start" name="pricetag-outline"></ion-icon>
+      <ion-label>Categoria</ion-label>
+      <span>{{categoriaSelecionada}}</span>
+    </ion-item>
+
+    <ion-item>
+      
+      <ion-chip *ngFor="let tag of categorias; let i = index" color="primary" outline="true" (click)="selectCategory(i)">
+        <ion-label color="secondary">{{tag}}</ion-label>
+      </ion-chip>
+
+
+    </ion-item>
+
+    <ion-button class="ion-margin" expand="block" (click)="editar()">
+      Atualizar tarefa
+    </ion-button>
+    
+  </ion-card>
+
+</ion-content>
